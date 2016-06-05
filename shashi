@@ -1,0 +1,47 @@
+#include<bits/stdc++.h>
+using namespace std;
+ 
+struct node{
+  int src;
+  int des;
+  int weight;
+    
+};
+ 
+bool cmp(node *root1,node *root2)
+{
+    return root1->weight<root2->weight;
+}
+int main()
+{
+    int x,y,w;
+   
+    vector<node*> arr;
+    for(int i=0;i<5;i++)
+    {
+         node *root=new node;
+        cin>>x>>y>>w;
+        
+        root->src=x;
+        root->des=y;
+        root->weight=w;
+        arr.push_back(root);
+        
+        
+        
+    }
+    int n=arr.size();
+    sort(arr.begin(),arr.end(),cmp);
+    cout<<"------------------------\n";
+    for(int i=0;i<5;i++)
+    {
+        node *root;
+        root=arr[i];
+        cout<<root->src<<" "<<root->des<<" "<<root->weight<<" "<<"\n";
+        
+    
+    }
+   
+   return 0;
+}
+
