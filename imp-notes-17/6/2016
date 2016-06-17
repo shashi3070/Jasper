@@ -1,0 +1,540 @@
+Program for multiplication of two numbers consists of 20 digits each?
+Given a excel sheet,get the column number of ABCD and column name of 6532?
+
+3:When all the numbers of different combinations consisting of 1,2,3,4,5 are arranged in increasing  order, give the rank of number 35421 ?
+4:Median of unsorted array in O(n) we can use median of median algorithm . we can use kth smallest  element 
+we modify the array to find check even and odd according to odd and even we find median
+for example if n=5
+than find k=3 which is actully the median
+5:Find next greater number with same set of digits
+
+6:Find next Smaller number with same set of digits
+7:What is trie, write code to create and implement a dictionary.
+8:denormalization
+ans-------------------------
+
+ores different but related types of data in separate logical tables called relations. When a query  combines data from multiple tables into a single result table, it is called a join. Multiple joins in  the same query can have a negative impact on performance. Introducing denormalization and adding back  a small number of redundancies can be a useful for cutting down on the number of joins.
+
+After data has been duplicated, the database designer must take into account how multiple instances of  the data will be maintained. One way to denormalize a database is to allow the database management  system (DBMS) to store redundant information on disk. This has the added benefit of ensuring the  consistency of redundant copies. Another approach is to denormalize the actual logical data design,  but this can quickly lead to inconsistent data. Rules called constraints can be used to specify how  redundant copies of information are synchronized, but they increase the complexity of the database  design and also run the risk of impacting write performance.
+
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
+
+diff b/w post and get
+
+Whilst not a description of the differences, below are a couple of things to think about when choosing  the correct method.
+
+GET requests can get cached by the browser which can be a problem (or benefit) when using ajax.
+GET requests expose parameters to users (POST does as well but they are less visible).
+POST can pass much more information to the server and can be of almost any length.
+
+======================================================================
+============================================================================
+
+=Why main() is required ? will program compile if we don’t use main()?
+
+You can compile any Java class without a main method, but a standalone application can't run without a  main() method *.
+
+The main method is the method that's defined to be called at the start of an application. Without it,  there is no place to start running.
+
+
+
+
+11
+down vote
+accepted
+The main method is not needed in java programs. As others have pointed out, web applications do not  use the main method.
+
+It is not even needed in standalone applications. Consider
+
+class JavaAppWithoutMain
+{
+    static
+    {
+    System . out . println ( "Hello World!" ) ;
+    }
+}
+I compiled it and ran and obtained the following result:
+
+Hello World!
+Exception in thread "main" java.lang.NoSuchMethodError: main
+For standalone applications you must either have
+
+a main method or
+a static initializer.
+Main is preferred.
+
+========================================================================
+
+11. What is API? We got into a detailed discussion about API’s.
+===============================
+
+puzzle:
+http://math.stackexchange.com/questions/5595/taking-seats-on-a-plane
+ans =prob -- 1/2
+
+Use of explicit keyword in C++
+http://www.geeksforgeeks.org/smart-pointers-cpp/
+
+
+================================================================
+
+http://www.geeksforgeeks.org/count-set-bits-in-an-integer/
+to count set bits inbuilt function in c
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int x= __builtin_popcount (4);
+    cout<<x;
+	cout<<__builtin_popcount(7);
+	return 0;
+}
+---------------------------------------
+2. Brian Kernighan’s Algorithm:
+Subtraction of 1 from a number toggles all the bits (from right to left) till the rightmost set bit(including the righmost set bit). So if we subtract a number by 1 and do bitwise & with itself (n & (n-1)), we unset the righmost set bit. If we do n & (n-1) in a loop and count the no of times loop executes we get the set bit count.
+Beauty of the this solution is number of times it loops is equal to the number of set bits in a given integer.
+
+int countSetBits(int n)
+{
+    unsigned int count = 0;
+    while (n)
+    {
+      n &= (n-1) ;
+      count++;
+    }
+    return count;
+}
+----------------------------------------------------------------------
+========================================
+
+
+Question: You are given two numbers A and B. Write a program to count number of bits needed to be flipped to convert A to B.
+
+Solution:
+
+  1. Calculate XOR of A and B.      
+        a_xor_b = A ^ B
+  2. Count the set bits in the above calculated XOR result.
+        countSetBits(a_xor_b)
+XOR of two number will have set bits only at those places where A differs from B.
+
+Example:
+
+   A  = 1001001
+   B  = 0010101
+   a_xor_b = 1011100
+   No of bits need to flipped = set bit count in a_xor_b i.e. 4
+
+
+
+
+
+=====================================================================
+Q2.linked list multiplication: Given two linked list that represents polynomial
+return a pointer to linked list which is multiplication of the two.
+
+====================================================================
+Initialize leftsum  as 0
+2) Get the total sum of the array as sum
+3) Iterate through the array and for each index i, do following.
+    a)  Update sum to get the right sum.  
+           sum = sum - arr[i] 
+       // sum is now right sum
+    b) If leftsum is equal to sum, then return current index. 
+    c) leftsum = leftsum + arr[i] // update leftsum for next iteration.
+4) return -1 // If we come out of loop without returning then
+             // there is no equilibrium index
+#include <stdio.h>
+ 
+int equilibrium(int arr[], int n)
+{
+   int sum = 0;      // initialize sum of whole array
+   int leftsum = 0; // initialize leftsum
+   int i;
+ 
+   /* Find sum of the whole array */
+   for (i = 0; i < n; ++i)
+        sum += arr[i];
+ 
+   for( i = 0; i < n; ++i)
+   {
+      sum -= arr[i]; // sum is now right sum for index i
+ 
+      if(leftsum == sum)
+        return i;
+ 
+      leftsum += arr[i];
+   }
+ 
+    /* If no equilibrium index found, then return 0 */
+    return -1;
+}
+ 
+int main()
+{
+  int arr[] = {-7, 1, 5, 2, -4, 3, 0};
+  int arr_size = sizeof(arr)/sizeof(arr[0]);
+  printf("First equilibrium index is %d\n", equilibrium(arr, arr_size));
+ 
+  getchar();
+  return 0;
+}
+=================================================================================
+
+: How to make sting mutable in Java? (initializing string using new will create it in heap which is not immutable but interviewer was interested to hear about string builder and string buffer )
+
+Difference between StringBuilder and StringBuffer and string in java?
+StringBuffer is synchronized, StringBuilder is not.
+
+Difference between HashMap and HashTable / HashMap vs HashTable  
+
+1. Synchronization or Thread Safe :  This is the most important difference between two . HashMap is non synchronized and not thread safe.On the other hand, HashTable is thread safe and synchronized.
+
+ArrayList Vs Vector
+1) Synchronization: ArrayList is non-synchronized which means multiple threads can work on ArrayList at the same time
+=================================================================
+Count the number of Ks between 0 and N
+Problem:
+
+I have seen questions like:
+
+count the number of 0s between 0 and N?
+count the number of 1s between 0 and N?
+count the number of 2s between 0 and N?
+=====================================================
+Compute sum of digits in all numbers from 1 to n
+
+  sum(10d - 1) = sum(10d-1 - 1) * 10 + 45*(10d-1) 
+===============================
+Compute no of 2,3,4,etc  in all numbers from 1 to n
+?
+
+============================================
+These array used in traverse 8 directions in given matrix 
+used in question like backtarcking maze,boogle question i.e find all combination of words
+// These arrays are used to get row and column numbers of 8 neighbours 
+    // of a given cell
+    static int rowNbr[] = {-1, -1, -1,  0, 0,  1, 1, 1};
+    static int colNbr[] = {-1,  0,  1, -1, 1, -1, 0, 1};
+// C++ program for Boggle game
+#include<iostream>
+#include<cstring>
+using namespace std;
+
+#define M 3
+#define N 3
+int isSafe(int row, int col, bool visited[][N])
+{
+    // row number is in range, column number is in range and value is 1 
+    // and not yet visited
+    return (row >= 0) && (row < M) &&     
+           (col >= 0) && (col < N) &&      
+           (!visited[row][col]); 
+}
+// Let the given dictionary be following
+string dictionary[] = {"GEEKS", "FOR", "QUIZ", "GO"};
+int n = sizeof(dictionary)/sizeof(dictionary[0]);
+
+// A given function to check if a given string is present in
+// dictionary. The implementation is naive for simplicity. As
+// per the question dictionary is givem to us.
+bool isWord(string &str)
+{
+	// Linearly search all words
+	for (int i=0; i<n; i++)
+		if (str.compare(dictionary[i]) == 0)
+		return true;
+	return false;
+}
+
+// A recursive function to print all words present on boggle
+void findWordsUtil(char boggle[M][N], bool visited[M][N], int i,
+				int j, string &str)
+{
+	// Mark current cell as visited and append current character
+	// to str
+	visited[i][j] = true;
+	str = str + boggle[i][j];
+
+	// If str is present in dictionary, then print it
+	if (isWord(str))
+		cout << str << endl;
+
+	// Traverse 8 adjacent cells of boggle[i][j]
+//	for (int row=i-1; row<=i+1 && row<M; row++)
+	//for (int col=j-1; col<=j+1 && col<N; col++)
+	static int rowNbr[] = {-1, -1, -1,  0, 0,  1, 1, 1};
+               static int colNbr[] = {-1,  0,  1, -1, 1, -1, 0, 1};
+
+
+      for (int k = 0; k < 8; ++k)
+        if (isSafe(i + rowNbr[k], j+ colNbr[k], visited) )
+		findWordsUtil(boggle,visited, i+rowNbr[k],j+colNbr[k], str);
+
+	// Erase current character from string and mark visited
+	// of current cell as false
+	str.erase(str.length()-1);
+	visited[i][j] = false;
+}
+
+// Prints all words present in dictionary.
+void findWords(char boggle[M][N])
+{
+	// Mark all characters as not visited
+	bool visited[M][N] = {{false}};
+
+	// Initialize current string
+	string str = "";
+
+	// Consider every character and look for all words
+	// starting with this character
+	for (int i=0; i<M; i++)
+	for (int j=0; j<N; j++)
+			findWordsUtil(boggle, visited, i, j, str);
+}
+
+// Driver program to test above function
+int main()
+{
+	char boggle[M][N] = {{'G','I','Z'},
+						{'U','E','K'},
+						{'Q','S','E'}};
+
+	cout << "Following words of dictionary are present\n";
+	findWords(boggle);
+	return 0;
+}
+//
+another example of above formula
+
+
+=====
+// Program to count islands in boolean 2D matrix
+#include <stdio.h>
+#include <string.h>
+#include <stdbool.h>
+ 
+#define ROW 5
+#define COL 5
+ 
+// A function to check if a given cell (row, col) can be included in DFS
+int isSafe(int M[][COL], int row, int col, bool visited[][COL])
+{
+    // row number is in range, column number is in range and value is 1 
+    // and not yet visited
+    return (row >= 0) && (row < ROW) &&     
+           (col >= 0) && (col < COL) &&      
+           (M[row][col] && !visited[row][col]); 
+}
+ 
+// A utility function to do DFS for a 2D boolean matrix. It only considers
+// the 8 neighbours as adjacent vertices
+void DFS(int M[][COL], int row, int col, bool visited[][COL])
+{
+    // These arrays are used to get row and column numbers of 8 neighbours 
+    // of a given cell
+    static int rowNbr[] = {-1, -1, -1,  0, 0,  1, 1, 1};
+    static int colNbr[] = {-1,  0,  1, -1, 1, -1, 0, 1};
+ 
+    // Mark this cell as visited
+    visited[row][col] = true;
+ 
+    // Recur for all connected neighbours
+    for (int k = 0; k < 8; ++k)
+        if (isSafe(M, row + rowNbr[k], col + colNbr[k], visited) )
+            DFS(M, row + rowNbr[k], col + colNbr[k], visited);
+}
+ 
+// The main function that returns count of islands in a given boolean
+// 2D matrix
+int countIslands(int M[][COL])
+{
+    // Make a bool array to mark visited cells.
+    // Initially all cells are unvisited
+    bool visited[ROW][COL];
+    memset(visited, 0, sizeof(visited));
+ 
+    // Initialize count as 0 and travese through the all cells of
+    // given matrix
+    int count = 0;
+    for (int i = 0; i < ROW; ++i)
+        for (int j = 0; j < COL; ++j)
+            if (M[i][j] && !visited[i][j]) // If a cell with value 1 is not
+            {                         // visited yet, then new island found
+                DFS(M, i, j, visited);     // Visit all cells in this island.
+                ++count;                   // and increment island count
+            }
+ 
+    return count;
+}
+ 
+// Driver program to test above function
+int main()
+{
+    int M[][COL]= {  {1, 1, 0, 0, 0},
+        {0, 1, 0, 0, 1},
+        {1, 0, 0, 1, 1},
+        {0, 0, 0, 0, 0},
+        {1, 0, 1, 0, 1}
+    };
+ 
+    printf("Number of islands is: %d\n", countIslands(M));
+ 
+    return 0;
+}
+
+===============================================
+For knight tour problem:
+
+/* xMove[] and yMove[] define next move of Knight.
+       xMove[] is for next value of x coordinate
+       yMove[] is for next value of y coordinate */
+    int xMove[8] = {  2, 1, -1, -2, -2, -1,  1,  2 };
+    int yMove[8] = {  1, 2,  2,  1, -1, -2, -2, -1 };
+
+
+
+
+
+
+==========================
+void printPascal(int n)
+{
+  for (int line = 1; line <= n; line++)
+  {
+    int C = 1;  // used to represent C(line, i)
+    for (int i = 1; i <= line; i++)  
+    {
+      printf("%d ", C);  // The first value in a line is always 1
+      C = C * (line - i) / i;  
+    }
+    printf("\n");
+  }
+}
+
+========================
+bool isLucky(int n)
+{
+static int counter = 2;
+
+if(counter > n)
+	return 1;
+if(n%counter == 0)
+	return 0;	 
+n = n-(n/counter);
+counter++;
+return isLucky(n);
+}
+
+=======================
+You are given 1271 apples and 17 buckets. You have to distribute apples in such a way that you can represent any number with bucket sum ??
+
+1,2,4,8,16,32,64,128,256,512 in the first 10 buckets.
+0,8,16,32,64,128 in the remaining 7 buckets.
+Basically, number till 1023 can be achieved using the first 10 buckets.
+We now have to find a way to divide the 248(11111000) remaining apples into the remaining 7 baskets i.e. 0,8,16,32,64,128
+
+
+=========================================================
+
+Below is one more interesting recurrence formula that can be used to find n’th Fibonacci Number in O(Log n) time.
+
+If n is even then k = n/2:
+F(n) = [2*F(k-1) + F(k)]*F(k)
+
+If n is odd then k = (n + 1)/2
+F(n) = F(k)*F(k) + F(k-1)*F(k-1)
+
+------------------
+/ C++ Program to find n'th fibonacci Number in
+// with O(Log n) arithmatic operations
+#include <bits/stdc++.h>
+using namespace std;
+ 
+const int MAX = 1000;
+ 
+// Create an array for memoization
+int f[MAX] = {0};
+ 
+// Returns n'th fuibonacci number using table f[]
+int fib(int n)
+{
+    // Base cases
+    if (n == 0)
+        return 0;
+    if (n == 1 || n == 2)
+        return (f[n] = 1);
+ 
+    // If fib(n) is already computed
+    if (f[n])
+        return f[n];
+ 
+    int k = (n & 1)? (n+1)/2 : n/2;
+ 
+    // Applyting above formula [Note value n&1 is 1
+    // if n is odd, else 0.
+    f[n] = (n & 1)? (fib(k)*fib(k) + fib(k-1)*fib(k-1))
+           : (2*fib(k-1) + fib(k))*fib(k);
+ 
+    return f[n];
+}
+ 
+/* Driver program to test above function */
+int main()
+{
+    int n = 9;
+    printf("%d ", fib(n));
+    return 0;
+---------------------------
+
+
+
+
+=========================================================
+http://puzzles.nigelcoldwell.co.uk/twentyseven.htm
+How many squares are there on a chessboard or chequerboard?? (the answer is not 64) 
+
+Can you extend your technique to calculate the number of rectangles on a chessboard?
+size	horizontal positions	vertical positions	positions
+1x1	8	8	64
+2x2	7	7	49
+3x3	6	6	36
+4x4	5	5	25
+5x5	4	4	16
+6x6	3	3	9
+7x7	2	2	4
+8x8	1	1	1
+ 	 	total	204
+
+=====================================
+
+Can you extend your technique to calculate the number of rectangles on a chessboard?
+Dimensions	 	1	2	3	4	5	6	7	8	 
+ 	      Positions	8	7	6	5	4	3	2	1	 
+1		8	64	56	48	40	32	24	16	8	 
+2		7	56	49	42	35	28	21	14	7	 
+3		6	48	42	36	30	24	18	12	6	 
+4		5	40	35	30	25	20	15	10	5	 
+5		4	32	28	24	20	16	12	8	4	 
+6		3	24	21	18	15	12	9	6	3	 
+7		2	16	14	12	10	8	6	4	2	 
+8		1	8	7	6	5	4	3	2	1	 
+ 	 	 	 	 	 	 	 	 	 	         1296
+================================================
+Design a machine that generates the glossary of a book.(input is book content and output is word with a one line or two line summary that are extracted from book)
+????????????????????????????
+????????????????
+
+==============================
+
+Find subarray with given sum ??
+ design a dictionary of words ??
+ Only one question in this round. I have to design a dictionary of words such that if any word is entered then it should give meaning for all anagrams for that word. We discussed for one hour. First I told about using try data structure to make dictionary and generate all anagrams of that word then searching each words. But he is not satisfied. Then I came up with some modification in structure of try data structure still not satisfied. Then I come up with multilevel hashing Technique. He somewhat satisfied.
+
+??
+
+
+
+===============================
