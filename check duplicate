@@ -1,0 +1,13 @@
+nt getMissingElement(int arr[], int size)
+{
+    int i;    
+ 
+    for(i = 0; i < size; i++)
+    {
+        if(arr[abs(arr[i])-1] > 0)
+            arr[abs(arr[i])-1] = -arr[abs(arr[i])-1];
+        else
+            return abs(arr[i]);
+    }
+ 
+}
