@@ -1,0 +1,2123 @@
+Program for multiplication of two numbers consists of 20 digits each?
+Given a excel sheet,get the column number of ABCD and column name of 6532?
+
+3:When all the numbers of different combinations consisting of 1,2,3,4,5 are arranged in increasing  order, give the rank of number 35421 ?
+4:Median of unsorted array in O(n) we can use median of median algorithm . we can use kth smallest  element 
+we modify the array to find check even and odd according to odd and even we find median
+for example if n=5
+than find k=3 which is actully the median
+5:Find next greater number with same set of digits
+
+6:Find next Smaller number with same set of digits
+7:What is trie, write code to create and implement a dictionary.
+8:denormalization
+ans-------------------------
+
+ores different but related types of data in separate logical tables called relations. When a query  combines data from multiple tables into a single result table, it is called a join. Multiple joins in  the same query can have a negative impact on performance. Introducing denormalization and adding back  a small number of redundancies can be a useful for cutting down on the number of joins.
+
+After data has been duplicated, the database designer must take into account how multiple instances of  the data will be maintained. One way to denormalize a database is to allow the database management  system (DBMS) to store redundant information on disk. This has the added benefit of ensuring the  consistency of redundant copies. Another approach is to denormalize the actual logical data design,  but this can quickly lead to inconsistent data. Rules called constraints can be used to specify how  redundant copies of information are synchronized, but they increase the complexity of the database  design and also run the risk of impacting write performance.
+
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
+
+diff b/w post and get
+
+Whilst not a description of the differences, below are a couple of things to think about when choosing  the correct method.
+
+GET requests can get cached by the browser which can be a problem (or benefit) when using ajax.
+GET requests expose parameters to users (POST does as well but they are less visible).
+POST can pass much more information to the server and can be of almost any length.
+
+======================================================================
+============================================================================
+
+=Why main() is required ? will program compile if we don’t use main()?
+
+You can compile any Java class without a main method, but a standalone application can't run without a  main() method *.
+
+The main method is the method that's defined to be called at the start of an application. Without it,  there is no place to start running.
+
+
+
+
+11
+down vote
+accepted
+The main method is not needed in java programs. As others have pointed out, web applications do not  use the main method.
+
+It is not even needed in standalone applications. Consider
+
+class JavaAppWithoutMain
+{
+    static
+    {
+    System . out . println ( "Hello World!" ) ;
+    }
+}
+I compiled it and ran and obtained the following result:
+
+Hello World!
+Exception in thread "main" java.lang.NoSuchMethodError: main
+For standalone applications you must either have
+
+a main method or
+a static initializer.
+Main is preferred.
+
+========================================================================
+
+11. What is API? We got into a detailed discussion about API’s.
+===============================
+
+puzzle:
+http://math.stackexchange.com/questions/5595/taking-seats-on-a-plane
+ans =prob -- 1/2
+
+Use of explicit keyword in C++
+http://www.geeksforgeeks.org/smart-pointers-cpp/
+
+
+================================================================
+
+http://www.geeksforgeeks.org/count-set-bits-in-an-integer/
+to count set bits inbuilt function in c
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int x= __builtin_popcount (4);
+    cout<<x;
+	cout<<__builtin_popcount(7);
+	return 0;
+}
+---------------------------------------
+2. Brian Kernighan’s Algorithm:
+Subtraction of 1 from a number toggles all the bits (from right to left) till the rightmost set bit(including the righmost set bit). So if we subtract a number by 1 and do bitwise & with itself (n & (n-1)), we unset the righmost set bit. If we do n & (n-1) in a loop and count the no of times loop executes we get the set bit count.
+Beauty of the this solution is number of times it loops is equal to the number of set bits in a given integer.
+
+int countSetBits(int n)
+{
+    unsigned int count = 0;
+    while (n)
+    {
+      n &= (n-1) ;
+      count++;
+    }
+    return count;
+}
+----------------------------------------------------------------------
+========================================
+
+
+Question: You are given two numbers A and B. Write a program to count number of bits needed to be flipped to convert A to B.
+
+Solution:
+
+  1. Calculate XOR of A and B.      
+        a_xor_b = A ^ B
+  2. Count the set bits in the above calculated XOR result.
+        countSetBits(a_xor_b)
+XOR of two number will have set bits only at those places where A differs from B.
+
+Example:
+
+   A  = 1001001
+   B  = 0010101
+   a_xor_b = 1011100
+   No of bits need to flipped = set bit count in a_xor_b i.e. 4
+
+
+
+
+
+=====================================================================
+Q2.linked list multiplication: Given two linked list that represents polynomial
+return a pointer to linked list which is multiplication of the two.
+
+====================================================================
+Initialize leftsum  as 0
+2) Get the total sum of the array as sum
+3) Iterate through the array and for each index i, do following.
+    a)  Update sum to get the right sum.  
+           sum = sum - arr[i] 
+       // sum is now right sum
+    b) If leftsum is equal to sum, then return current index. 
+    c) leftsum = leftsum + arr[i] // update leftsum for next iteration.
+4) return -1 // If we come out of loop without returning then
+             // there is no equilibrium index
+#include <stdio.h>
+ 
+int equilibrium(int arr[], int n)
+{
+   int sum = 0;      // initialize sum of whole array
+   int leftsum = 0; // initialize leftsum
+   int i;
+ 
+   /* Find sum of the whole array */
+   for (i = 0; i < n; ++i)
+        sum += arr[i];
+ 
+   for( i = 0; i < n; ++i)
+   {
+      sum -= arr[i]; // sum is now right sum for index i
+ 
+      if(leftsum == sum)
+        return i;
+ 
+      leftsum += arr[i];
+   }
+ 
+    /* If no equilibrium index found, then return 0 */
+    return -1;
+}
+ 
+int main()
+{
+  int arr[] = {-7, 1, 5, 2, -4, 3, 0};
+  int arr_size = sizeof(arr)/sizeof(arr[0]);
+  printf("First equilibrium index is %d\n", equilibrium(arr, arr_size));
+ 
+  getchar();
+  return 0;
+}
+=================================================================================
+
+: How to make sting mutable in Java? (initializing string using new will create it in heap which is not immutable but interviewer was interested to hear about string builder and string buffer )
+
+Difference between StringBuilder and StringBuffer and string in java?
+StringBuffer is synchronized, StringBuilder is not.
+
+Difference between HashMap and HashTable / HashMap vs HashTable  
+
+1. Synchronization or Thread Safe :  This is the most important difference between two . HashMap is non synchronized and not thread safe.On the other hand, HashTable is thread safe and synchronized.
+
+ArrayList Vs Vector
+1) Synchronization: ArrayList is non-synchronized which means multiple threads can work on ArrayList at the same time
+=================================================================
+Count the number of Ks between 0 and N
+Problem:
+
+I have seen questions like:
+
+count the number of 0s between 0 and N?
+count the number of 1s between 0 and N?
+count the number of 2s between 0 and N?
+=====================================================
+Compute sum of digits in all numbers from 1 to n
+
+  sum(10d - 1) = sum(10d-1 - 1) * 10 + 45*(10d-1) 
+===============================
+Compute no of 2,3,4,etc  in all numbers from 1 to n
+?
+
+============================================
+These array used in traverse 8 directions in given matrix 
+used in question like backtarcking maze,boogle question i.e find all combination of words
+// These arrays are used to get row and column numbers of 8 neighbours 
+    // of a given cell
+    static int rowNbr[] = {-1, -1, -1,  0, 0,  1, 1, 1};
+    static int colNbr[] = {-1,  0,  1, -1, 1, -1, 0, 1};
+// C++ program for Boggle game
+#include<iostream>
+#include<cstring>
+using namespace std;
+
+#define M 3
+#define N 3
+int isSafe(int row, int col, bool visited[][N])
+{
+    // row number is in range, column number is in range and value is 1 
+    // and not yet visited
+    return (row >= 0) && (row < M) &&     
+           (col >= 0) && (col < N) &&      
+           (!visited[row][col]); 
+}
+// Let the given dictionary be following
+string dictionary[] = {"GEEKS", "FOR", "QUIZ", "GO"};
+int n = sizeof(dictionary)/sizeof(dictionary[0]);
+
+// A given function to check if a given string is present in
+// dictionary. The implementation is naive for simplicity. As
+// per the question dictionary is givem to us.
+bool isWord(string &str)
+{
+	// Linearly search all words
+	for (int i=0; i<n; i++)
+		if (str.compare(dictionary[i]) == 0)
+		return true;
+	return false;
+}
+
+// A recursive function to print all words present on boggle
+void findWordsUtil(char boggle[M][N], bool visited[M][N], int i,
+				int j, string &str)
+{
+	// Mark current cell as visited and append current character
+	// to str
+	visited[i][j] = true;
+	str = str + boggle[i][j];
+
+	// If str is present in dictionary, then print it
+	if (isWord(str))
+		cout << str << endl;
+
+	// Traverse 8 adjacent cells of boggle[i][j]
+//	for (int row=i-1; row<=i+1 && row<M; row++)
+	//for (int col=j-1; col<=j+1 && col<N; col++)
+	static int rowNbr[] = {-1, -1, -1,  0, 0,  1, 1, 1};
+               static int colNbr[] = {-1,  0,  1, -1, 1, -1, 0, 1};
+
+
+      for (int k = 0; k < 8; ++k)
+        if (isSafe(i + rowNbr[k], j+ colNbr[k], visited) )
+		findWordsUtil(boggle,visited, i+rowNbr[k],j+colNbr[k], str);
+
+	// Erase current character from string and mark visited
+	// of current cell as false
+	str.erase(str.length()-1);
+	visited[i][j] = false;
+}
+
+// Prints all words present in dictionary.
+void findWords(char boggle[M][N])
+{
+	// Mark all characters as not visited
+	bool visited[M][N] = {{false}};
+
+	// Initialize current string
+	string str = "";
+
+	// Consider every character and look for all words
+	// starting with this character
+	for (int i=0; i<M; i++)
+	for (int j=0; j<N; j++)
+			findWordsUtil(boggle, visited, i, j, str);
+}
+
+// Driver program to test above function
+int main()
+{
+	char boggle[M][N] = {{'G','I','Z'},
+						{'U','E','K'},
+						{'Q','S','E'}};
+
+	cout << "Following words of dictionary are present\n";
+	findWords(boggle);
+	return 0;
+}
+//
+another example of above formula
+
+
+=====
+// Program to count islands in boolean 2D matrix
+#include <stdio.h>
+#include <string.h>
+#include <stdbool.h>
+ 
+#define ROW 5
+#define COL 5
+ 
+// A function to check if a given cell (row, col) can be included in DFS
+int isSafe(int M[][COL], int row, int col, bool visited[][COL])
+{
+    // row number is in range, column number is in range and value is 1 
+    // and not yet visited
+    return (row >= 0) && (row < ROW) &&     
+           (col >= 0) && (col < COL) &&      
+           (M[row][col] && !visited[row][col]); 
+}
+ 
+// A utility function to do DFS for a 2D boolean matrix. It only considers
+// the 8 neighbours as adjacent vertices
+void DFS(int M[][COL], int row, int col, bool visited[][COL])
+{
+    // These arrays are used to get row and column numbers of 8 neighbours 
+    // of a given cell
+    static int rowNbr[] = {-1, -1, -1,  0, 0,  1, 1, 1};
+    static int colNbr[] = {-1,  0,  1, -1, 1, -1, 0, 1};
+ 
+    // Mark this cell as visited
+    visited[row][col] = true;
+ 
+    // Recur for all connected neighbours
+    for (int k = 0; k < 8; ++k)
+        if (isSafe(M, row + rowNbr[k], col + colNbr[k], visited) )
+            DFS(M, row + rowNbr[k], col + colNbr[k], visited);
+}
+ 
+// The main function that returns count of islands in a given boolean
+// 2D matrix
+int countIslands(int M[][COL])
+{
+    // Make a bool array to mark visited cells.
+    // Initially all cells are unvisited
+    bool visited[ROW][COL];
+    memset(visited, 0, sizeof(visited));
+ 
+    // Initialize count as 0 and travese through the all cells of
+    // given matrix
+    int count = 0;
+    for (int i = 0; i < ROW; ++i)
+        for (int j = 0; j < COL; ++j)
+            if (M[i][j] && !visited[i][j]) // If a cell with value 1 is not
+            {                         // visited yet, then new island found
+                DFS(M, i, j, visited);     // Visit all cells in this island.
+                ++count;                   // and increment island count
+            }
+ 
+    return count;
+}
+ 
+// Driver program to test above function
+int main()
+{
+    int M[][COL]= {  {1, 1, 0, 0, 0},
+        {0, 1, 0, 0, 1},
+        {1, 0, 0, 1, 1},
+        {0, 0, 0, 0, 0},
+        {1, 0, 1, 0, 1}
+    };
+ 
+    printf("Number of islands is: %d\n", countIslands(M));
+ 
+    return 0;
+}
+
+===============================================
+For knight tour problem:
+
+/* xMove[] and yMove[] define next move of Knight.
+       xMove[] is for next value of x coordinate
+       yMove[] is for next value of y coordinate */
+    int xMove[8] = {  2, 1, -1, -2, -2, -1,  1,  2 };
+    int yMove[8] = {  1, 2,  2,  1, -1, -2, -2, -1 };
+
+
+
+
+
+
+==========================
+void printPascal(int n)
+{
+  for (int line = 1; line <= n; line++)
+  {
+    int C = 1;  // used to represent C(line, i)
+    for (int i = 1; i <= line; i++)  
+    {
+      printf("%d ", C);  // The first value in a line is always 1
+      C = C * (line - i) / i;  
+    }
+    printf("\n");
+  }
+}
+
+========================
+bool isLucky(int n)
+{
+static int counter = 2;
+
+if(counter > n)
+	return 1;
+if(n%counter == 0)
+	return 0;	 
+n = n-(n/counter);
+counter++;
+return isLucky(n);
+}
+
+=======================
+You are given 1271 apples and 17 buckets. You have to distribute apples in such a way that you can represent any number with bucket sum ??
+
+1,2,4,8,16,32,64,128,256,512 in the first 10 buckets.
+0,8,16,32,64,128 in the remaining 7 buckets.
+Basically, number till 1023 can be achieved using the first 10 buckets.
+We now have to find a way to divide the 248(11111000) remaining apples into the remaining 7 baskets i.e. 0,8,16,32,64,128
+
+
+=========================================================
+
+Below is one more interesting recurrence formula that can be used to find n’th Fibonacci Number in O(Log n) time.
+
+If n is even then k = n/2:
+F(n) = [2*F(k-1) + F(k)]*F(k)
+
+If n is odd then k = (n + 1)/2
+F(n) = F(k)*F(k) + F(k-1)*F(k-1)
+
+------------------
+/ C++ Program to find n'th fibonacci Number in
+// with O(Log n) arithmatic operations
+#include <bits/stdc++.h>
+using namespace std;
+ 
+const int MAX = 1000;
+ 
+// Create an array for memoization
+int f[MAX] = {0};
+ 
+// Returns n'th fuibonacci number using table f[]
+int fib(int n)
+{
+    // Base cases
+    if (n == 0)
+        return 0;
+    if (n == 1 || n == 2)
+        return (f[n] = 1);
+ 
+    // If fib(n) is already computed
+    if (f[n])
+        return f[n];
+ 
+    int k = (n & 1)? (n+1)/2 : n/2;
+ 
+    // Applyting above formula [Note value n&1 is 1
+    // if n is odd, else 0.
+    f[n] = (n & 1)? (fib(k)*fib(k) + fib(k-1)*fib(k-1))
+           : (2*fib(k-1) + fib(k))*fib(k);
+ 
+    return f[n];
+}
+ 
+/* Driver program to test above function */
+int main()
+{
+    int n = 9;
+    printf("%d ", fib(n));
+    return 0;
+---------------------------
+
+
+
+
+=========================================================
+http://puzzles.nigelcoldwell.co.uk/twentyseven.htm
+How many squares are there on a chessboard or chequerboard?? (the answer is not 64) 
+
+Can you extend your technique to calculate the number of rectangles on a chessboard?
+size	horizontal positions	vertical positions	positions
+1x1	8	8	64
+2x2	7	7	49
+3x3	6	6	36
+4x4	5	5	25
+5x5	4	4	16
+6x6	3	3	9
+7x7	2	2	4
+8x8	1	1	1
+ 	 	total	204
+
+=====================================
+
+Can you extend your technique to calculate the number of rectangles on a chessboard?
+Dimensions	 	1	2	3	4	5	6	7	8	 
+ 	      Positions	8	7	6	5	4	3	2	1	 
+1		8	64	56	48	40	32	24	16	8	 
+2		7	56	49	42	35	28	21	14	7	 
+3		6	48	42	36	30	24	18	12	6	 
+4		5	40	35	30	25	20	15	10	5	 
+5		4	32	28	24	20	16	12	8	4	 
+6		3	24	21	18	15	12	9	6	3	 
+7		2	16	14	12	10	8	6	4	2	 
+8		1	8	7	6	5	4	3	2	1	 
+ 	 	 	 	 	 	 	 	 	 	         1296
+================================================
+Design a machine that generates the glossary of a book.(input is book content and output is word with a one line or two line summary that are extracted from book)
+????????????????????????????
+????????????????
+
+==============================
+
+Find subarray with given sum ??
+ design a dictionary of words ??
+ Only one question in this round. I have to design a dictionary of words such that if any word is entered then it should give meaning for all anagrams for that word. We discussed for one hour. First I told about using try data structure to make dictionary and generate all anagrams of that word then searching each words. But he is not satisfied. Then I came up with some modification in structure of try data structure still not satisfied. Then I come up with multilevel hashing Technique. He somewhat satisfied.
+
+??
+
+
+
+===============================
+3. A complete n-ary tree is a tree in which each node has n children or no children. Let I be the number of internal nodes and L be the number of leaves in a complete n-ary tree. If L = 41, and I = 10, what is the value of n?
+(A) 3
+(B) 4
+(C) 5
+(D) 6
+
+Answer (C)
+For an n-ary tree where each node has n children or no children, following relation holds
+
+    L = (n-1)*I + 1
+===================================================
+void factorial(int n)
+{
+    int res[MAX];
+ 
+    // Initialize result
+    res[0] = 1;
+    int res_size = 1;
+ 
+    // Apply simple factorial formula n! = 1 * 2 * 3 * 4...*n
+    for (int x=2; x<=n; x++)
+        res_size = multiply(x, res, res_size);
+ 
+    cout << "Factorial of given number is \n";
+    for (int i=res_size-1; i>=0; i--)
+        cout << res[i];
+}
+ 
+// This function multiplies x with the number represented by res[].
+// res_size is size of res[] or number of digits in the number represented
+// by res[]. This function uses simple school mathematics for multiplication.
+// This function may value of res_size and returns the new value of res_size
+int multiply(int x, int res[], int res_size)
+{
+    int carry = 0;  // Initialize carry
+ 
+    // One by one multiply n with individual digits of res[]
+    for (int i=0; i<res_size; i++)
+    {
+        int prod = res[i] * x + carry;
+        res[i] = prod % 10;  // Store last digit of 'prod' in res[]
+        carry  = prod/10;    // Put rest in carry
+    }
+ 
+    // Put carry in res and increase result size
+    while (carry)
+    {
+        res[res_size] = carry%10;
+        carry = carry/10;
+        res_size++;
+    }
+    return res_size;
+}
+
+=============================================================
+we can use kadane algorithm to find min-sum-contiguous-subarray
+by inverting sign and than agin revert back to original
+like
+example:
+1:http://www.geeksforgeeks.org/maximum-absolute-difference-between-sum-of-two-contiguous-sub-arrays/
+// Find maximum subarray sum for subarray [0..i]
+// using standard Kadane's algorithm. This version of
+// Kadane's Algorithm will work if all numbers are
+// negative.
+int maxLeftSubArraySum(int a[], int size, int sum[])
+{
+    int max_so_far = a[0];
+    int curr_max = a[0];
+    sum[0] = max_so_far;
+ 
+    for (int i = 1; i < size; i++)
+    {
+        curr_max = max(a[i], curr_max + a[i]);
+        max_so_far = max(max_so_far, curr_max);
+        sum[i] = max_so_far;
+    }
+ 
+    return max_so_far;
+}
+ 
+// Find maximum subarray sum for subarray [i..n]
+// using Kadane's algorithm. This version of Kadane's
+// Algorithm will work if all numbers are negative
+int maxRightSubArraySum(int a[], int n, int sum[])
+{
+    int max_so_far = a[n];
+    int curr_max = a[n];
+    sum[n] = max_so_far;
+ 
+    for (int i = n-1; i >= 0; i--)
+    {
+        curr_max = max(a[i], curr_max + a[i]);
+        max_so_far = max(max_so_far, curr_max);
+        sum[i] = max_so_far;
+    }
+ 
+    return max_so_far;
+}
+// The function finds two non-overlapping contiguous
+// sub-arrays such that the absolute difference
+// between the sum of two sub-array is maximum.
+int findMaxAbsDiff(int arr[], int n)
+{
+    // create and build an array that stores
+    // maximum sums of subarrays that lie in
+    // arr[0...i]
+    int leftMax[n];
+    maxLeftSubArraySum(arr, n, leftMax);
+ 
+    // create and build an array that stores
+    // maximum sums of subarrays that lie in
+    // arr[i+1...n-1]
+    int rightMax[n];
+    maxRightSubArraySum(arr, n-1, rightMax);
+ 
+    // Invert array (change sign) to find minumum
+    // sum subarrays.
+    int invertArr[n];
+    for (int i = 0; i < n; i++)
+        invertArr[i] = -arr[i];
+ 
+    // create and build an array that stores
+    // minimum sums of subarrays that lie in
+    // arr[0...i]
+    int leftMin[n];
+    maxLeftSubArraySum(invertArr, n, leftMin);
+    for (int i = 0; i < n; i++)
+        leftMin[i] = -leftMin[i];
+ 
+    // create and build an array that stores
+    // minimum sums of subarrays that lie in
+    // arr[i+1...n-1]
+    int rightMin[n];
+    maxRightSubArraySum(invertArr, n - 1, rightMin);
+    for (int i = 0; i < n; i++)
+        rightMin[i] = -rightMin[i];
+ 
+    int result = INT_MIN;
+    for (int i = 0; i < n - 1; i++)
+    {
+        /* For each index i, take maximum of
+        1. abs(max sum subarray that lies in arr[0...i] -
+            min sum subarray that lies in arr[i+1...n-1])
+        2. abs(min sum subarray that lies in arr[0...i] -
+            max sum subarray that lies in arr[i+1...n-1]) */
+        int absValue = max(abs(leftMax[i] - rightMin[i + 1]),
+                        abs(leftMin[i] - rightMax[i + 1]));
+        if (absValue > result)
+            result = absValue;
+    }
+ 
+    return result;
+}
+---------------------------------------------------------------------------------------
+2:http://www.geeksforgeeks.org/maximum-contiguous-circular-sum/
+// C/C++ program for maximum contiguous circular sum problem
+#include<stdio.h>
+ 
+// Standard Kadane's algorithm to find maximum subarray
+// sum
+int kadane(int a[], int n);
+ 
+// The function returns maximum circular contiguous sum
+// in a[]
+int maxCircularSum(int a[], int n)
+{
+   // Case 1: get the maximum sum using standard kadane'
+   // s algorithm
+   int max_kadane = kadane(a, n);
+ 
+   // Case 2: Now find the maximum sum that includes
+   // corner elements.
+   int max_wrap = 0, i;
+   for (i=0; i<n; i++)
+   {
+        max_wrap += a[i]; // Calculate array-sum
+        a[i] = -a[i];  // invert the array (change sign)
+   }
+ 
+   // max sum with corner elements will be:
+   // array-sum - (-max subarray sum of inverted array)
+   max_wrap = max_wrap + kadane(a, n);
+ 
+   // The maximum circular sum will be maximum of two sums
+   return (max_wrap > max_kadane)? max_wrap: max_kadane;
+}
+==================================================
+#include<iostream>
+using namespace std;
+ 
+// Returns value of Binomial Coefficient C(n, k)
+unsigned long int binomialCoeff(unsigned int n, unsigned int k)
+{
+    unsigned long int res = 1;
+ 
+    // Since C(n, k) = C(n, n-k)
+    if (k > n - k)
+        k = n - k;
+ 
+    // Calculate value of [n*(n-1)*---*(n-k+1)] / [k*(k-1)*---*1]
+    for (int i = 0; i < k; ++i)
+    {
+        res *= (n - i);
+        res /= (i + 1);
+    }
+ 
+    return res;
+}
+ 
+// A Binomial coefficient based function to find nth catalan
+// number in O(n) time
+unsigned long int catalan(unsigned int n)
+{
+    // Calculate value of 2nCn
+    unsigned long int c = binomialCoeff(2*n, n);
+ 
+    // return 2nCn/(n+1)
+    return c/(n+1);
+}
+ 
+// Driver program to test above functions
+int main()
+{
+    for (int i = 0; i < 10; i++)
+        cout << catalan(i) << " ";
+    return 0;
+}
+=================================================
+for equal list add
+// A recursive program to add two linked lists
+
+#include <stdio.h>
+#include <stdlib.h>
+#include<bits/stdc++.h>
+using namespace std;
+// A linked List Node
+struct node
+{
+	int data;
+	struct node* next;
+};
+
+typedef struct node node;
+
+/* A utility function to insert a node at the beginning of linked list */
+void push(struct node** head_ref, int new_data)
+{
+	/* allocate node */
+	struct node* new_node = (struct node*) malloc(sizeof(struct node));
+
+	/* put in the data */
+	new_node->data = new_data;
+
+	/* link the old list off the new node */
+	new_node->next = (*head_ref);
+
+	/* move the head to point to the new node */
+	(*head_ref) = new_node;
+}
+
+/* A utility function to print linked list */
+void printList(struct node *node)
+{
+	while (node != NULL)
+	{
+		printf("%d ", node->data);
+		node = node->next;
+	}
+	printf("\n");
+}
+
+// A utility function to swap two pointers
+void swapPointer( node** a, node** b )
+{
+	node* t = *a;
+	*a = *b;
+	*b = t;
+}
+
+/* A utility function to get size of linked list */
+int getSize(struct node *node)
+{
+	int size = 0;
+	while (node != NULL)
+	{
+		node = node->next;
+		size++;
+	}
+	return size;
+}
+
+// Adds two linked lists of same size represented by head1 and head2 and returns
+// head of the resultant linked list. Carry is propagated while returning from
+// the recursion
+node* addSameSize(node* head1, node* head2, int* carry)
+{
+	// Since the function assumes linked lists are of same size,
+	// check any of the two head pointers
+	if (head1 == NULL)
+		return NULL;
+
+	int sum;
+
+	// Allocate memory for sum node of current two nodes
+	node* result = (node *)malloc(sizeof(node));
+
+	// Recursively add remaining nodes and get the carry
+	result->next = addSameSize(head1->next, head2->next, carry);
+
+	// add digits of current nodes and propagated carry
+	sum = head1->data + head2->data + *carry;
+	*carry = sum / 10;
+	sum = sum % 10;
+
+	// Assigne the sum to current node of resultant list
+	result->data = sum;
+
+	return result;
+}
+
+// This function is called after the smaller list is added to the bigger
+// lists's sublist of same size. Once the right sublist is added, the carry
+// must be added toe left side of larger list to get the final result.
+void addCarryToRemaining(node* head1, node* cur, int* carry, node** result)
+{
+	int sum;
+
+	// If diff. number of nodes are not traversed, add carry
+	if (head1 != cur)
+	{
+		addCarryToRemaining(head1->next, cur, carry, result);
+
+		sum = head1->data + *carry;
+		*carry = sum/10;
+		sum %= 10;
+
+		// add this node to the front of the result
+		push(result, sum);
+	}
+}
+
+// The main function that adds two linked lists represented by head1 and head2.
+// The sum of two lists is stored in a list referred by result
+void addList(node* head1, node* head2, node** result)
+{
+	node *cur;
+
+	// first list is empty
+	if (head1 == NULL)
+	{
+		*result = head2;
+		return;
+	}
+
+	// second list is empty
+	else if (head2 == NULL)
+	{
+		*result = head1;
+		return;
+	}
+
+	int size1 = getSize(head1);
+	int size2 = getSize(head2) ;
+
+	int carry = 0;
+
+	// Add same size lists
+	if (size1 == size2)
+		*result = addSameSize(head1, head2, &carry);
+
+	else
+	{
+		int diff = abs(size1 - size2);
+
+		// First list should always be larger than second list.
+		// If not, swap pointers
+		if (size1 < size2)
+			swapPointer(&head1, &head2);
+
+		// move diff. number of nodes in first list
+		for (cur = head1; diff--; cur = cur->next);
+
+		// get addition of same size lists
+		*result = addSameSize(cur, head2, &carry);
+
+		// get addition of remaining first list and carry
+		addCarryToRemaining(head1, cur, &carry, result);
+	}
+
+	// if some carry is still there, add a new node to the fron of
+	// the result list. e.g. 999 and 87
+	if (carry)
+		push(result, carry);
+}
+
+node * fun1(node * root1,node*root2,int *carry)
+{
+     node *root=new node;
+    if(root1==NULL && root2==NULL)
+        return NULL;
+        
+    root->next=fun1(root1->next,root2->next,carry);
+    int sum=root1->data+root2->data+(*carry);
+    (*carry)=sum/10;
+    sum=sum%10;
+   
+    root->data=sum;
+    //cout<<"sum "<<sum<<endl;
+ 
+   
+    return root;
+    
+}
+void fun(node * root1,node * root2,node * &res)
+{
+    
+    
+    int carry=0;
+    node *head=NULL;
+   head=fun1(root1,root2,&carry); 
+  
+    if(carry)
+    {
+        node * root=new node ;
+        root->data=carry;
+        root->next=head;
+        head=root;
+        
+    }
+     printList(head);
+     
+     int n1,n2;
+   
+    
+    
+    
+    
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Driver program to test above functions
+int main()
+{
+	node *head1 = NULL, *head2 = NULL, *result = NULL,*res=NULL;
+
+	int arr1[] = {9, 9};
+	int arr2[] = {1, 8};
+
+	int size1 = sizeof(arr1) / sizeof(arr1[0]);
+	int size2 = sizeof(arr2) / sizeof(arr2[0]);
+
+	// Create first list as 9->9->9
+	int i;
+	for (i = size1-1; i >= 0; --i)
+		push(&head1, arr1[i]);
+
+	// Create second list as 1->8
+	for (i = size2-1; i >= 0; --i)
+		push(&head2, arr2[i]);
+
+	addList(head1, head2, &result);
+
+	printList(result);
+	fun(head1,head2,res);
+		printList(res);
+	
+
+	return 0;
+}
+
+===============================================
+
+Steps to generate the next higher permutation:
+1. Take the previously printed permutation and find the rightmost character in it, which is smaller than its next character. Let us call this character as ‘first character’.
+
+2. Now find the ceiling of the ‘first character’. Ceiling is the smallest character on right of ‘first character’, which is greater than ‘first character’. Let us call the ceil character as ‘second character’.
+
+3. Swap the two characters found in above 2 steps.
+
+4. Sort the substring (in non-decreasing order) after the original index of ‘first character’.
+
+Let us consider the string “ABCDEF”. Let previously printed permutation be “DCFEBA”. The next permutation in sorted order should be “DEABCF”. Let us understand above steps to find next permutation. The ‘first character’ will be ‘C’. The ‘second character’ will be ‘E’. After swapping these two, we get “DEFCBA”. The final step is to sort the substring after the character original index of ‘first character’. Finally, we get “DEABCF”.
+
+Following is C++ implementation of the algorithm.
+
+// Program to print all permutations of a string in sorted order.
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+ 
+/* Following function is needed for library function qsort(). Refer
+   http://www.cplusplus.com/reference/clibrary/cstdlib/qsort/ */
+int compare (const void *a, const void * b)
+{  return ( *(char *)a - *(char *)b ); }
+ 
+// A utility function two swap two characters a and b
+void swap (char* a, char* b)
+{
+    char t = *a;
+    *a = *b;
+    *b = t;
+}
+ 
+// This function finds the index of the smallest character
+// which is greater than 'first' and is present in str[l..h]
+int findCeil (char str[], char first, int l, int h)
+{
+    // initialize index of ceiling element
+    int ceilIndex = l;
+ 
+    // Now iterate through rest of the elements and find
+    // the smallest character greater than 'first'
+    for (int i = l+1; i <= h; i++)
+      if (str[i] > first && str[i] < str[ceilIndex])
+            ceilIndex = i;
+ 
+    return ceilIndex;
+}
+ 
+// Print all permutations of str in sorted order
+void sortedPermutations ( char str[] )
+{
+    // Get size of string
+    int size = strlen(str);
+ 
+    // Sort the string in increasing order
+    qsort( str, size, sizeof( str[0] ), compare );
+ 
+    // Print permutations one by one
+    bool isFinished = false;
+    while ( ! isFinished )
+    {
+        // print this permutation
+        printf ("%s \n", str);
+ 
+        // Find the rightmost character which is smaller than its next
+        // character. Let us call it 'first char'
+        int i;
+        for ( i = size - 2; i >= 0; --i )
+           if (str[i] < str[i+1])
+              break;
+ 
+        // If there is no such chracter, all are sorted in decreasing order,
+        // means we just printed the last permutation and we are done.
+        if ( i == -1 )
+            isFinished = true;
+        else
+        {
+            // Find the ceil of 'first char' in right of first character.
+            // Ceil of a character is the smallest character greater than it
+            int ceilIndex = findCeil( str, str[i], i + 1, size - 1 );
+ 
+            // Swap first and second characters
+            swap( &str[i], &str[ceilIndex] );
+ 
+            // Sort the string on right of 'first char'
+            qsort( str + i + 1, size - i - 1, sizeof(str[0]), compare );
+        }
+    }
+}
+ 
+// Driver program to test above function
+int main()
+{
+    char str[] = "ABCD";
+    sortedPermutations( str );
+    return 0;
+}
+
+=================================
+
+Lexicographically next permutation in C++
+Given a word, find lexicographically greater permutation of it. For example, lexicographically next permutation of “gfg” is “fgg” and next permutation of “acb” is “bac”.
+
+Note : In some cases, the next lexicographically greater word might not exist, e.g,. “aaa” and “edcba”
+
+In C++, there is a specific function that saves us from a lot of code. It’s in the file #include <algorithm>. The function is next_permutation(a.begin(), a.end()). It returns ‘true’ if the function could rearrange the object as a lexicographically greater permutation. Otherwise, the function returns ‘false’.
+
+Let us look at the code snippet here :
+
+// Find the next lexicographically greater permutation of a word
+#include <iostream>
+#include <algorithm>
+using namespace std;
+ 
+int main()
+{
+    string s = {"gfg"};
+    bool val = next_permutation(s.begin(), s.end());
+    if (val == false)
+        cout << "No Word Possible" << endl;
+    else
+        cout << s << endl;
+    return 0;
+}
+Run on IDE
+Output:
+
+ggf
+The same program can also be implemented without using STL.Below is the code snippet for the same:
+
+// Find the next lexicographically greater permutation of a word
+
+#include <iostream>
+using namespace std;
+ 
+void swap(char *a,char *b)
+{
+    if( *a == *b )
+        return;
+    *a^=*b;
+    *b^=*a;
+    *a^=*b;
+}
+void rev(string& s,int l,int r)
+{
+    while(l<r)
+        swap(&s[l++],&s[r--]);
+}
+ 
+int bsearch (string& s,int l,int r,int key)
+{
+    int index = -1;
+    while(l<=r)
+    {
+        int mid = l+(r-l)/2;
+        if(s[mid]<=key)
+            r=mid-1;
+        else
+        {
+            l=mid+1;
+            if(index = -1 || s[index]<=s[mid])
+                index = mid;
+        }
+    }
+return index;
+}
+ 
+bool nextpermutation(string& s)
+{
+    int len = s.length(), i=len-2;
+    while(i>=0 && s[i]>=s[i+1])
+       --i;
+    if(i<0)
+        return false;
+    else
+    {
+        int index=bsearch(s,i+1,len-1,s[i]);
+        swap(&s[i],&s[index]);
+        rev(s,i+1,len-1);
+        return true;
+    }
+}
+int main ()
+{
+    string s = {"gfg"};
+    bool val = nextpermutation(s);
+    if (val == false)
+        cout << "No Word Possible" << endl;
+    else
+        cout << s << endl;
+    return 0;
+}
+// This
+===================================
+
+Majority Element
+Majority Element: A majority element in an array A[] of size n is an element that appears more than n/2 times (and hence there is at most one such element).
+
+Write a function which takes an array and emits the majority element (if it exists), otherwise prints NONE as follows:
+
+       I/P : 3 3 4 2 4 4 2 4 4
+       O/P : 4 
+
+       I/P : 3 3 4 2 4 4 2 4
+       O/P : NONE
+METHOD 3 (Using Moore’s Voting Algorithm)
+
+This is a two step process.
+1. Get an element occurring most of the time in the array. This phase will make sure that if there is a majority element then it will return that only.
+2. Check if the element obtained from above step is majority element.
+
+1. Finding a Candidate:
+The algorithm for first phase that works in O(n) is known as Moore’s Voting Algorithm. Basic idea of the algorithm is if we cancel out each occurrence of an element e with all the other elements that are different from e then e will exist till end if it is a majority element.
+
+findCandidate(a[], size)
+1.  Initialize index and count of majority element
+     maj_index = 0, count = 1
+2.  Loop for i = 1 to size – 1
+    (a)If a[maj_index] == a[i]
+        count++
+    (b)Else
+        count--;
+    (c)If count == 0
+        maj_index = i;
+        count = 1
+3.  Return a[maj_index]
+======================================================================
+Selection sort makes O(n) swaps which is minimum among all sorting algorithms mentioned above.
+==============================================================================
+
+1) In a k-ary tree where every node has either 0 or k children, following property is always true.
+
+  L = (k - 1)*I + 1
+Where L = Number of leaf nodes
+      I = Number of internal nodes  
+
+
+
+2) In Binary tree, number of leaf nodes is always one more than nodes with two children.
+
+   L = T + 1
+Where L = Number of leaf nodes
+      T = Number of internal nodes with two children 
+3) For 3-ary tree derived from k-ary tree formula
+
+Let L be the number of leaf nodes and I be the number of internal nodes, then following relation holds for above given tree (For details, please see question 3 of http://geeksforgeeks.org/?p=4545)
+  L = (3-1)I + 1 = 2I + 1
+Total number of nodes(n) is sum of leaf nodes and internal nodes
+  n = L + I
+After solving above two, we get L = (2n+1)/3
+
+
+
+
+4) remember
+A weight-balanced tree is a binary tree in which for each node. The number of nodes in the left sub tree is at least half and at most twice the number of nodes in the right sub tree. The maximum possible height (number of nodes on the path from the root to the farthest leaf) of such a tree on n nodes is best described by which of the following? 
+a)  \log_2 n
+b)  \log_{4/3} n
+c)  \log_3 n
+d)  \log_{3/2} n
+(A) A
+(B) B
+(C) C
+(D) D
+
+
+Answer: (D) 
+
+==============================================================
+We have discussed Introduction to Binary Tree in set 1 and Properties of Binary Tree in Set 2. In this post, common types of binary is discussed.
+Following are common types of Binary Trees.
+Full Binary Tree A Binary Tree is full if every node has 0 or 2 children. Following are examples of full binary tree.
+               18
+           /       \  
+         15         30  
+        /  \        /  \
+      40    50    100   40
+
+
+             18
+           /    \   
+         15     20    
+        /  \       
+      40    50   
+    /   \
+   30   50
+
+
+
+               18
+            /     \  
+          40       30  
+                   /  \
+                 100   40
+In a Full Binary, number of leaf nodes is number of internal nodes plus 1
+       L = I + 1
+Where L = Number of leaf nodes, I = Number of internal nodes
+See Handshaking Lemma and Tree for proof.
+
+
+Complete Binary Tree: A Binary Tree is complete Binary Tree if all levels are completely filled except possibly the last level and the last level has all keys as left as possible
+Following are examples of Complete Binary Trees
+               18
+           /       \  
+         15         30  
+        /  \        /  \
+      40    50    100   40
+
+
+               18
+           /       \  
+         15         30  
+        /  \        /  \
+      40    50    100   40
+     /  \   /
+    8   7  9 
+Practical example of Complete Binary Tree is Binary Heap.
+
+
+Perfect Binary Tree A Binary tree is Perfect Binary Tree in which all internal nodes have two children and all leaves are at same level.
+Following are examples of Perfect Binaryr Trees.
+               18
+           /       \  
+         15         30  
+        /  \        /  \
+      40    50    100   40
+
+
+               18
+           /       \  
+         15         30  
+A Perfect Binary Tree of height h (where height is number of nodes on path from root to leaf) has 2h – 1 node.
+Example of Perfect binary tree is ancestors in family. Keep a person at root, parents as children, parents of parents as their children.
+
+
+Balanced Binary Tree
+A binary tree is balanced if height of the tree is O(Log n) where n is number of nodes. For Example, AVL tree maintain O(Log n) height by making sure that the difference between heights of left and right subtrees is 1. Red-Black trees maintain O(Log n) height by making sure that the number of Black nodes on every root to leaf paths are same and there are no adjacent red nodes. Balanced Binary Search trees are performance wise good as they provide O(log n) time for search, insert and delete.
+
+
+A degenerate (or pathological) tree A Tree where every internal node has one child. Such trees are performance-wise same as linked list.
+      10
+      /
+    20
+     \
+     30
+      \
+      40     
+===========================================================================
+imp questions:
+When searching for the key value 60 in a binary search tree, nodes containing the key values 10, 20, 40, 50, 70 80, 90 are traversed, not necessarily in the order given. How many different orders are possible in which these key values can occur on the search path from the root to the node containing the value 60?
+35
+B
+64
+C
+128
+5040
+Binary Search Trees    Tree Traversals    Gate IT 2007    
+Discuss it
+
+
+Question 20 Explanation: 
+There are two set of values, smaller than 60 and greater than 60. Smaller values 10, 20, 40 and 50 are visited, means they are visited in order. Similarly, 90, 80 and 70 are visited in order. 
+= 7!/(4!3!)
+= 35
+
+================================================
+
+
+consider the following Binary Search Tree
+
+               10
+             /    \
+            5      20
+           /      /  \           
+          4     15    30
+               /  
+              11       
+If we randomly search one of the keys present in above BST, what would be the expected number of comparisons?
+A
+2.75
+B
+2.25
+2.57
+D
+3.25
+Binary Search Trees    
+Discuss it
+
+
+Question 9 Explanation: 
+Expected number of comparisons = (1*1 + 2*2 + 3*3 + 4*1)/7 = 18/7 = 2.57
+===============================================
+
+sql
+--------------------------------------------------------------
+
+
+Oracle
+
+Oracle does not have an ISNULL() function. However, we can use the NVL() function to achieve the same result:
+
+SELECT ProductName,UnitPrice*(UnitsInStock+NVL(UnitsOnOrder,0))
+FROM Products
+MySQL
+
+MySQL does have an ISNULL() function. However, it works a little bit different from Microsoft's ISNULL() function.
+
+In MySQL we can use the IFNULL() function, like this:
+
+SELECT ProductName,UnitPrice*(UnitsInStock+IFNULL(UnitsOnOrder,0))
+FROM Products
+
+--------------------------------------------------
+
+NULLIF compares expr1 and expr2. If they are equal, then the function returns null. If they are not equal, then the function returns expr1. You cannot specify the literal NULL for expr1.
+
+If both arguments are numeric datatypes, then Oracle Database determines the argument with the higher numeric precedence, implicitly converts the other argument to that datatype, and returns that datatype. If the arguments are not numeric, then they must be of the same datatype, or Oracle returns an error.
+
+The NULLIF function is logically equivalent to the following CASE expression:
+Example:
+
+
+
+The following example selects those employees from the sample schema hr who have changed jobs since they were hired, as indicated by a job_id in the job_history table different from the current job_id in the employees table:
+
+SELECT e.last_name, NULLIF(e.job_id, j.job_id) "Old Job ID"
+   FROM employees e, job_history j
+   WHERE e.employee_id = j.employee_id
+   ORDER BY last_name;
+
+LAST_NAME                 Old Job ID
+------------------------- ----------
+De Haan                   AD_VP
+Hartstein                 MK_MAN
+Kaufling                  ST_MAN
+Kochhar                   AD_VP
+Kochhar                   AD_VP
+Raphaely                  PU_MAN
+Taylor                    SA_REP
+Taylor
+Whalen                    AD_ASST
+Whalen
+
+
+=
+
+
+
+---------------------------------------------------------------------------------------------------------
+
+Natural Join : Guidelines
+- The associated tables have one or more pairs of identically named columns.
+- The columns must be the same data type.
+- Don’t use ON clause in a natural join.
+
+The SQL NATURAL JOIN is a type of EQUI JOIN and is structured in such a way that, columns with same name of associate tables will appear once only.
+
+we need not give conditions in it . automatically comapre two column having same name of column
+and get back the result
+Example
+SELECT *   
+FROM company  
+NATURAL JOIN foods; 
+
+--------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+diff b/w     IN and ANY
+
+
+<ANY() - less than maximum
+>ANY() - more than minimum
+=ANY() - equivalent to IN
+>ALL() - more than the maximum
+<ALL() - less than the minimum
+
+
+The ANY syntax allows you to write things like
+
+WHERE x > ANY(a, b, c)
+or event
+WHERE x > ANY(SELECT ... FROM ...)
+
+if we use x=ANY(a,b,c)
+than is equal to IN
+
+
+
+
+=============================================================================
+
+
+
+Another operator are use  as 
+
+ANY ,ALL
+With the help of ALL
+x>ALL(a,b,c)
+if all condition are met than only return true
+in sub query
+
+
+
+
+=================================================
+
+
+
+
+important questions are taken tutorialpoint.com
+
+
+
+-----------------------------------------------------
+Dear readers, these SQL Interview Questions have been designed specially to get you acquainted with the nature of questions you may encounter during your interview for the subject of SQL. As per my experience good interviewers hardly plan to ask any particular question during your interview, normally questions start with some basic concept of the subject and later they continue based on further discussion and what you answer:
+
+What is the difference between SQL and MySQL or SQL Server?
+SQL or Structured Query Language is a language; language that communicates with a relational database thus providing ways of manipulating and creating databases. MySQL and Microsoft’s SQL Server both are relational database management systems that use SQL as their standard relational database language.
+
+What is the difference between SQL and PL/SQL?
+PL/SQL is a dialect of SQL that adds procedural features of programming languages in SQL. It was developed by Oracle Corporation in the early 90's to enhance the capabilities of SQL.
+
+What are various DDL commands in SQL? Give brief description of their purposes.
+Following are various DDL or Data Definition Language commands in SQL −
+
+CREATE − it creates a new table, a view of a table, or other object in database.
+
+ALTER − it modifies an existing database object, such as a table.
+
+DROP − it deletes an entire table, a view of a table or other object in the database.
+
+What are various DML commands in SQL? Give brief description of their purposes.
+Following are various DML or Data Manipulation Language commands in SQL −
+
+SELECT − it retrieves certain records from one or more tables.
+
+INSERT − it creates a record.
+
+UPDATE − it modifies records.
+
+DELETE − it deletes records.
+
+What are various DCL commands in SQL? Give brief description of their purposes.
+Following are various DCL or Data Control Language commands in SQL −
+
+GRANT − it gives a privilege to user.
+
+REVOKE − it takes back privileges granted from user.
+
+Can you sort a column using a column alias?
+Yes. A column alias could be used in the ORDER BY clause.
+
+Is a NULL value same as zero or a blank space? If not then what is the difference?
+A NULL value is not same as zero or a blank space. A NULL value is a value which is ‘unavailable, unassigned, unknown or not applicable’. Whereas, zero is a number and blank space is a character.
+
+Say True or False. Give explanation if False.
+If a column value taking part in an arithmetic expression is NULL, then the result obtained would be NULLM.
+
+If a table contains duplicate rows, does a query result display the duplicate values by default? How can you eliminate duplicate rows from a query result?
+A query result displays all rows including the duplicate rows. To eliminate duplicate rows in the result, the DISTINCT keyword is used in the SELECT clause.
+
+What is the purpose of the condition operators BETWEEN and IN?
+The BETWEEN operator displays rows based on a range of values. The IN condition operator checks for values contained in a specific set of values.
+
+How do you search for a value in a database table when you don’t have the exact value to search for?
+In such cases, the LIKE condition operator is used to select rows that match a character pattern. This is also called ‘wildcard’ search.
+
+What is the default ordering of data using the ORDER BY clause? How could it be changed?
+The default sorting order is ascending. It can be changed using the DESC keyword, after the column name in the ORDER BY clause.
+
+What are the specific uses of SQL functions?
+SQL functions have the following uses −
+
+Performing calculations on data
+
+Modifying individual data items
+
+Manipulating the output
+
+Formatting dates and numbers
+
+Converting data types
+
+What are the case manipulation functions of SQL?
+LOWER, UPPER, INITCAP
+
+Which function returns the remainder in a division operation?
+The MOD function returns the remainder in a division operation.
+
+What is the purpose of the NVL function?
+The NVL function converts a NULL value to an actual value.
+
+What is the difference between the NVL and the NVL2 functions?
+The NVL(exp1, exp2) function converts the source expression (or value) exp1 to the target expression (or value) exp2, if exp1 contains NULL. The return value has the same data type as that of exp1.
+
+The NVL2(exp1, exp2, exp3) function checks the first expression exp1, if it is not null then, the second expression exp2 is returned. If the first expression exp1 is null, then the third expression exp3 is returned.
+
+What is the use of the NULLIF function?
+The NULLIF function compares two expressions. If they are equal, the function returns null. If they are not equal, the first expression is returned.
+
+Discuss the syntax and use of the COALESCE function?
+Which expressions or functions allow you to implement conditional processing in a SQL statement?
+There are two ways to implement conditional processing or IF-THEN-ELSE logic in a SQL statement.
+
+Using CASE expression
+
+Using the DECODE function
+
+You want to display a result query from joining two tables with 20 and 10 rows respectively. Erroneously you forget to write the WHERE clause. What would be the result?
+The result would be the Cartesian product of two tables with 20 x 10 = 200 rows.
+
+What is the difference between cross joins and natural joins?
+The cross join produces the cross product or Cartesian product of two tables. The natural join is based on all the columns having same name and data types in both the tables.
+
+What is the purpose of the group functions in SQL? Give some examples of group functions.
+Group functions in SQL work on sets of rows and returns one result per group. Examples of group functions are AVG, COUNT, MAX, MIN, STDDEV, SUM, VARIANCE.
+
+Say True or False. Give explanation if False.
+By default the group functions consider only distinct values in the set.
+
+By default, group functions consider all values including the duplicate values.
+
+Say True or False. Give explanation if False.
+The DISTINCT keyword allows a function consider only non-duplicate values.
+
+True.
+
+Say True or False. Give explanation if False.
+All group functions ignore null values.
+
+True.
+
+Say True or False. Give explanation if False.
+COUNT(*) returns the number of columns in a table.
+
+False. COUNT(*) returns the number of rows in a table.
+
+What’s wrong in the following query?
+SELECT subject_code, count(name)  
+FROM students;
+What’s wrong in the following query?
+   SELECT subject_code, AVG (marks)
+   FROM students
+   WHERE AVG(marks) > 75
+   GROUP BY subject_code;
+The WHERE clause cannot be used to restrict groups. The HAVING clause should be used.
+
+   SELECT subject_code, AVG (marks)
+   FROM students
+   HAVING AVG(marks) > 75
+   GROUP BY subject_code;
+Say True or False. Give explanation if False.
+Group functions cannot be nested.
+
+False. Group functions can be nested to a depth of two.
+
+What do you understand by a subquery? When is it used?
+Say True or False. Give explanation if False.
+A single row subquery returns only one row from the outer SELECT statement
+
+False. A single row subquery returns only one row from the inner SELECT statement.
+
+Say True or False. Give explanation if False.
+A multiple row subquery returns more than one row from the inner SELECT statement.
+
+True.
+
+Say True or False. Give explanation if False.
+Multiple column subqueries return more than one column from the inner SELECT statement.
+
+True.
+
+What’s wrong in the following query?
+   SELECT student_code, name
+   FROM students
+   WHERE marks = 
+               (SELECT MAX(marks)
+                  FROM students
+                  GROUP BY subject_code);
+Here a single row operator = is used with a multiple row subquery.
+
+What are the various multiple row comparison operators in SQL?
+IN, ANY, ALL.
+
+What is the pupose of DML statements in SQL?
+The DML statements are used to add new rows to a table, update	or modify data in existing rows, or remove existing rows from a table.
+
+Which statement is used to add a new row in a database table?
+Say True or False. Give explanation if False.
+While inserting new rows in a table you must list values in the default order of the columns.
+
+How do you insert null values in a column while inserting data?
+Say True or False. Give explanation if False.
+INSERT statement does not allow copying rows from one table to another.
+
+False. INSERT statement allows to add rows to a table copying rows from an existing table.
+
+How do you copy rows from one table to another?
+The INSERT statement can be used to add rows to a table by copying from another table. In this case, a subquery is used in the place of the VALUES clause.
+
+What happens if you omit the WHERE clause in the UPDATE statement?
+All the rows in the table are modified.
+
+Can you modify the rows in a table based on values from another table? Explain.
+Yes. Use of subqueries in UPDATE statements allow you to update rows in a table based on values from another table.
+
+Say True or False. Give explanation if False.
+The DELETE statement is used to delete a table from the database.
+
+What happens if you omit the WHERE clause in a delete statement?
+All the rows in the table are deleted.
+
+Can you remove rows from a table based on values from another table? Explain.
+Say True or False. Give explanation if False.
+Attempting to delete a record with a value attached to an integrity constraint, returns an error.
+
+Say True or False. Give explanation if False.
+You can use a subquery in an INSERT statement.
+
+What is the purpose of the MERGE statement in SQL?
+The MERGE statement allows conditional update or insertion of data into a database table. It performs an UPDATE if the rows exists, or an INSERT if the row does not exist.
+
+Say True or False. Give explanation if False.
+A DDL statement or a DCL statement is automatically committed.
+
+What is the difference between VARCHAR2 AND CHAR datatypes?
+VARCHAR2 represents variable length character data, whereas CHAR represents fixed length character data.
+
+Say True or False. Give explanation if False.
+A DROP TABLE statement can be rolled back.
+
+Which SQL statement is used to add, modify or drop columns in a database table?
+The ALTER TABLE statement.
+
+What is a view? Why should you use a view?
+A view is a logical snapshot based on a table or another view. It is used for −
+
+Restricting access to data;
+Making complex queries simple;
+Ensuring data independency;
+Providing different views of same data.
+Say True or False. Give explanation if False.
+A view doesn’t have data of its own.
+
+True.
+
+
+--------------------------------------------------------------------------------------------------------------
+==================================
+
+/find-subarray-with-given-sum-in-array-of-integers
+
+/* An efficient program to print subarray with sum as given sum */
+#include<stdio.h>
+ 
+/* Returns true if the there is a subarray of arr[] with sum equal to 'sum'
+   otherwise returns false.  Also, prints the result */
+int subArraySum(int arr[], int n, int sum)
+{
+    /* Initialize curr_sum as value of first element
+       and starting point as 0 */
+    int curr_sum = arr[0], start = 0, i;
+ 
+    /* Add elements one by one to curr_sum and if the curr_sum exceeds the
+       sum, then remove starting element */
+    for (i = 1; i <= n; i++)
+    {
+        // If curr_sum exceeds the sum, then remove the starting elements
+        while (curr_sum > sum && start < i-1)
+        {
+            curr_sum = curr_sum - arr[start];
+            start++;
+        }
+ 
+        // If curr_sum becomes equal to sum, then return true
+        if (curr_sum == sum)
+        {
+            printf ("Sum found between indexes %d and %d", start, i-1);
+            return 1;
+        }
+ 
+        // Add this element to curr_sum
+        if (i < n)
+          curr_sum = curr_sum + arr[i];
+    }
+ 
+    // If we reach here, then no subarray
+    printf("No subarray found");
+    return 0;
+}
+ 
+
+-------------------------------------------------------------------------
+for nagative no
+
+void subArraySum(int arr[], int n, int sum)
+{
+    // create an empty map
+    unordered_map<int, int> map;
+ 
+    // Maintains sum of elements so far
+    int curr_sum = 0;
+ 
+    for (int i = 0; i < n; i++)
+    {
+        // add current element to curr_sum
+        curr_sum = curr_sum + arr[i];
+ 
+        // if curr_sum is equal to target sum
+        // we found a subarray starting from index 0
+        // and ending at index i
+        if (curr_sum == sum)
+        {
+            cout << "Sum found between indexes "
+                 << 0 << " to " << i << endl;
+            return;
+        }
+ 
+        // If curr_sum - sum already exists in map
+        // we have found a subarray with target sum
+        if (map.find(curr_sum - sum) != map.end())
+        {
+            cout << "Sum found between indexes "
+                 << map[curr_sum - sum] + 1
+                 << " to " << i << endl;
+            return;
+        }
+ 
+        map[curr_sum] = i;
+    }
+ 
+    // If we reach here, then no subarray exists
+    cout << "No subarray with given sum exists";
+}
+
+
+-------------------------------------------------------------
+Find subarray with given sum | Set 1 (Nonnegative Numbers)
+Given an unsorted array of nonnegative integers, find a continous subarray which adds to a given number.
+
+Examples:
+
+Input: arr[] = {1, 4, 20, 3, 10, 5}, sum = 33
+Ouptut: Sum found between indexes 2 and 4
+
+Input: arr[] = {1, 4, 0, 0, 3, 10, 5}, sum = 7
+Ouptut: Sum found between indexes 1 and 4
+
+Input: arr[] = {1, 4}, sum = 0
+Output: No subarray found
+
+
+// C++ program to print all subarrays
+// in the array which has sum 0
+#include <iostream>
+#include <unordered_map>
+#include <vector>
+using namespace std;
+  
+// Function to print all subarrays in the array which
+// has sum 0
+vector< pair<int, int> > findSubArrays(int arr[], int n)
+{
+    // create an empty map
+    unordered_map<int, vector<int> > map;
+  
+    // create an empty vector of pairs to store
+    // subarray starting and ending index
+    vector <pair<int, int>> out;
+  
+    // Maintains sum of elements so far
+    int sum = 0;
+  
+    for (int i = 0; i < n; i++)
+    {
+        // add current element to sum
+        sum += arr[i];
+  
+        // if sum is 0, we found a subarray starting
+        // from index 0 and ending at index i
+        if (sum == 0)
+            out.push_back(make_pair(0, i));
+  
+        // If sum already exists in the map there exists
+        // at-least one subarray ending at index i with
+        // 0 sum
+        if (map.find(sum) != map.end())
+        {
+            // map[sum] stores starting index of all subarrays
+            vector<int> vc = map[sum];
+            for (auto it = vc.begin(); it != vc.end(); it++)
+                out.push_back(make_pair(*it + 1, i));
+        }
+  
+        // Important - no else
+        map[sum].push_back(i);
+    }
+  
+    // return output vector
+    return out;
+}
+  
+// Utility function to print all subarrays with sum 0
+void print(vector<pair<int, int>> out)
+{
+    for (auto it = out.begin(); it != out.end(); it++)
+        cout << "Subarray found from Index " <<
+            it->first << " to " << it->second << endl;
+}
+  
+// Driver code
+int main()
+{
+    int arr[] = {6, 3, -1, -3, 4, -2, 2, 4, 6, -12, -7};
+    int n = sizeof(arr)/sizeof(arr[0]);
+  
+    vector<pair<int, int> > out = findSubArrays(arr, n);
+  
+    // if we didn’t find any subarray with 0 sum,
+    // then subarray doesn’t exists
+    if (out.size() == 0)
+        cout << "No subarray exists";
+    else
+        print(out);
+  
+    return 0;
+}
+
+
+------------------------------------------------------------------------------------------------------
+
+
+Legendre’s formula (Given p and n, find the largest x such that p^x divides n!)
+Given an integer n and a prime number p, find the largest x such that px (p raised to power x) divides n! (factorial)
+
+Examples:
+
+Input:  n = 7, p = 3
+Output: x = 2
+32 divides 7! and 2 is the largest such power of 3.
+
+Input:  n = 10, p = 3
+Output: x = 4
+34 divides 10! and 4 is the largest such power of 3.
+
+
+// C program to find largest x such that p*x divides n!
+#include <stdio.h>
+ 
+// Returns largest power of p that divides n!
+int largestPower(int n, int p)
+{
+    // Initialize result
+    int x = 0;
+ 
+    // Calculate x = n/p + n/(p^2) + n/(p^3) + ....
+    while (n)
+    {
+        n /= p;
+        x += n;
+    }
+    return x;
+}
+ 
+// Driver program
+int main()
+{
+    int n = 10, p = 3;
+    printf("The largest power of %d that divides %d! is %d\n",
+           p, n, largestPower(n, p));
+    return 0;
+}
+
+------------------------------------------------------------------------------------
+
+
+No of Factors of n!
+Given a positive integer n, find the no of factors in n! where n <= 105.
+
+Examples :
+
+Input : n = 3
+Output : 4
+Factors of 3! are 1, 2, 3, 6
+
+Input : n = 4
+Output : 8
+Factors of 4! are 1, 2, 3, 4, 
+                 6, 8, 12, 24
+                  
+Input : n = 16
+Output : 5376
+
+// C++ program to count number of factors of n
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+ 
+// Sieve of Eratosthenes to mark all prime number
+// in array prime as 1
+void sieve(int n, bool prime[])
+{
+    // Initialize all numbers as prime
+    for (int i=1; i<=n; i++)
+        prime[i] = 1;
+ 
+    // Mark composites
+    prime[1] = 0;
+    for (int i=2; i*i<=n; i++)
+    {
+        if (prime[i])
+        {
+            for (int j=i*i; j<=n; j += i)
+                prime[j] = 0;
+        }
+    }
+}
+ 
+// Returns the highest exponent of p in n!
+int expFactor(int n, int p)
+{
+    int x = p;
+    int exponent = 0;
+    while ((n/x) > 0)
+    {
+        exponent += n/x;
+        x *= p;
+    }
+    return exponent;
+}
+ 
+// Returns the no of factors in n!
+ll countFactors(int n)
+{
+    // ans stores the no of factors in n!
+    ll ans = 1;
+ 
+    // Find all primes upto n
+    bool prime[n+1];
+    sieve(n, prime);
+ 
+    // Multiply exponent (of primes) added with 1
+    for (int p=1; p<=n; p++)
+    {
+        // if p is a prime then p is also a
+        // prime factor of n!
+        if (prime[p]==1)
+            ans *= (expFactor(n, p) + 1);
+    }
+ 
+    return ans;
+}
+ 
+// Driver code
+int main()
+{
+    int n = 16;
+    printf("Count of factors of %d! is %lld\n",
+                                n, countFactors(n));
+    return 0;
+}
+
+======================================================================
+
+
+ Function to return trailing 0s in factorial of n
+int findTrailingZeros(int  n)
+{
+    // Initialize result
+    int count = 0;
+ 
+    // Keep dividing n by powers of 5 and update count
+    for (int i=5; n/i>=1; i *= 5)
+          count += n/i;
+ 
+    return count;
+}
+
+
+=========================================================
