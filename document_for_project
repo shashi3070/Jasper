@@ -1,0 +1,74 @@
+
+
+
+
+steps: 1	Water Level indicater circuit
+
+
+{
+
+
+Refer to following link for more details
+
+http://www.snrelectronicsblog.com/diy-projects/water-level-indicator/
+
+battery inputs are:
+
+red :		positive
+black:		negative
+
+
+Pins for water tank :	
+		pin 1: 		yellow		ground
+
+		pin 2:		white		25%
+
+		pin 3:		gray		50%
+
+		pin 4		purple		75%
+
+		pin 5		blue		100%
+
+Input for arduino	:
+
+		pin13:   BROWN
+
+		pin 12:  Black
+
+		pin10:	Green
+
+		pin8:	Blue
+
+		pin 6:	Red
+
+
+}
+
+
+step 2:		configuration of xbee
+
+{
+
+NOTE:	"XBEE ARE ALREADY CONFIGURED AND READY TO USE "
+
+
+
+	
+xbee on arduino is cordinator with serial no 13A20040F96DD5
+
+xbee on usb explorer is router with serial no 13A20040F96EA1
+
+
+Refer following link for more details:
+
+https://eewiki.net/display/Wireless/XBee+Wireless+Communication+Setup
+
+
+
+
+}
+
+
+
+
+STEP 3: ARDUINO CODE ALREADY MAILED TO NITIN SIR
